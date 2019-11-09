@@ -1,25 +1,15 @@
-# Load extensions
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# Custom vars
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 COMPOSER=$HOME/.composer/vendor/bin
 LOCAL_NODE_BIN=node_modules/.bin
 
-# If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$COMPOSER:$PATH
 export PATH=$LOCAL_NODE_BIN:$PATH
-
-# Android Dev / React Native
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$HOME/.gem/ruby/2.6.0/bin:$PATH
+export PATH=$HOME/.npm-global/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/hs/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -43,8 +33,14 @@ ZSH_THEME="robbyrussell"
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -79,9 +75,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git zsh-completions kubectl helm
-)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-completions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,14 +93,8 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
-# Make sublime the default editor
-export EDITOR='subl -n -w'
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -116,13 +104,16 @@ export EDITOR='subl -n -w'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
 
 # Load my aliases
 if [ -f ~/.aliases ]; then
   . ~/.aliases
 fi
 
-# Load Pure prompt (https://github.com/sindresorhus/pure)
+source $(dirname $(gem which colorls))/tab_complete.sh
+
+autoload -U compinit && compinit
+
 autoload -U promptinit; promptinit
 prompt pure
-autoload -U compinit && compinit

@@ -1,0 +1,7 @@
+zsh Installed
+npm Installed
+nodejs FAILED TO INSTALL!!!
+vim Installed
+docker Installed
+sublime-text FAILED TO INSTALL!!!
+deluge Installed
