@@ -45,6 +45,7 @@ alias k="kubectl"
 
 alias ls="colorls --sd -A --gs"
 alias ll="colorls --sd -A --gs -l"
+alias tree="colorls --tree"
 
 # OS:Arch
 alias pbcopy='xsel --clipboard --input'
